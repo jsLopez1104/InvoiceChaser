@@ -1,0 +1,24 @@
+# Despliegue en Render (plan gratis). Render lee este archivo con "New > Blueprint".
+services:
+  - type: web
+    name: invoicechaser-jachi-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: DEMO_MODE
+        value: "true"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: FRONTEND_URL
+        value: https://invoicechaser-jachi.netlify.app
+      - key: CORS_ORIGINS
+        value: https://invoicechaser-jachi.netlify.app
+      # Demo: SQLite en disco efímero. Se reinicia en cada despliegue y el usuario demo se vuelve a crear solo.
+      - key: DATABASE_URL
+        value: sqlite:///./invoicechaser.db
