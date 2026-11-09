@@ -6,6 +6,8 @@ InvoiceChaser es un micro-SaaS de cobranza automática para pequeños negocios e
 
 ![Resumen de cartera](docs/screenshots/dashboard.png)
 
+**[Probar la demo en vivo](https://invoicechaser-jachi.netlify.app)**: pulsa "Probar la demo sin registrarme". El backend está en el plan gratis de Render, así que la primera carga puede tardar unos 50 segundos mientras el servidor despierta. Los datos de la demo se reinician cada vez que el servidor se reinicia.
+
 ## Qué hace
 
 - **Recordatorios automáticos** 3 días antes, el día del vencimiento, y a los 7, 14 y 21 días de mora (configurable). El tono pasa de amable a firme.
