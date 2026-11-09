@@ -1,4 +1,5 @@
 import logging
+import secrets
 import time
 from datetime import datetime, timezone
 
@@ -14,7 +15,8 @@ from ..services.payments import build_fake_event, verify_event
 router = APIRouter(prefix="/webhooks", tags=["webhooks"])
 settings = get_settings()
 log = logging.getLogger("invoicechaser.webhooks")
-DEMO_EVENTS_SECRET = "demo-events-secret"
+# Aleatorio en cada arranque: el repo es público, así que un secreto fijo permitiría falsificar eventos.
+DEMO_EVENTS_SECRET = secrets.token_hex(32)
 
 
 def events_secret() -> str:
